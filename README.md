@@ -1,68 +1,102 @@
-# desafio-back-kotlin
+# 🏦 Acutis - Backend
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Este é o backend da aplicação **Acutis**, um sistema de gerenciamento de usuários, agências bancárias, contas e transações. Desenvolvido com **Kotlin + Quarkus**, utiliza um banco de dados PostgreSQL containerizado com Docker.
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+---
 
-## Running the application in dev mode
+## 🚀 Tecnologias
 
-You can run your application in dev mode that enables live coding using:
+- [Kotlin](https://kotlinlang.org/)
+- [Quarkus](https://quarkus.io/)
+- [Gradle](https://gradle.org/)
+- [Docker](https://www.docker.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- SDK Java **21**
 
-```shell script
+---
+
+## ⚙️ Requisitos
+
+- [Java SDK 21+](https://jdk.java.net/21/)
+- [Docker](https://www.docker.com/)
+- [Gradle](https://gradle.org/) (utiliza o wrapper incluso)
+
+---
+
+## 📦 Build do Projeto
+
+Para compilar o projeto:
+
+```bash
+./gradlew clean build
+```
+
+---
+
+## ▶️ Executar em modo dev
+
+Para rodar o backend em modo de desenvolvimento com hot reload:
+
+```bash
 ./gradlew quarkusDev
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+---
 
-## Packaging and running the application
+## 🛢️ Subir o banco de dados com Docker
 
-The application can be packaged using:
+1. Navegue até o diretório de recursos:
 
-```shell script
-./gradlew build
+```bash
+cd develop-resources
 ```
 
-It produces the `quarkus-run.jar` file in the `build/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `build/quarkus-app/lib/` directory.
+2. Inicie o banco de dados PostgreSQL com:
 
-The application is now runnable using `java -jar build/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-
-```shell script
-./gradlew build -Dquarkus.package.jar.type=uber-jar
+```bash
+docker-compose up --build
 ```
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar build/*-runner.jar`.
+---
 
-## Creating a native executable
+## 🧪 Endpoints e Testes
 
-You can create a native executable using:
-
-```shell script
-./gradlew build -Dquarkus.native.enabled=true
+Os endpoints seguem o padrão REST e estarão disponíveis em:  
+```
+http://localhost:8080
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+Utilize ferramentas como [Postman](https://www.postman.com/) ou [Insomnia](https://insomnia.rest/) para testar.
 
-```shell script
-./gradlew build -Dquarkus.native.enabled=true -Dquarkus.native.container-build=true
+---
+
+## 📝 Organização
+
+O projeto segue uma estrutura modular por recurso:
+
+```
+src/
+├── main/
+│   ├── kotlin/
+│   │   └── com.acutis/
+│   │       ├── bancos/
+│   │       ├── agencias/
+│   │       ├── usuarios/
+│   │       ├── contas/
+│   │       └── transacoes/
+│   └── resources/
+├── test/
 ```
 
-You can then execute your native executable with: `./build/desafio-back-kotlin-1.0.0-SNAPSHOT-runner`
+---
 
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/gradle-tooling>.
+## 👨‍💻 Autor
 
-## Related Guides
+Desenvolvido para o desafio técnico da **Acutis**.  
+Feito com 💙 por **Iury Azevedo**.
 
-- REST resources for Hibernate ORM with Panache ([guide](https://quarkus.io/guides/rest-data-panache)): Generate Jakarta REST resources for your Hibernate Panache entities and repositories
-- Kotlin ([guide](https://quarkus.io/guides/kotlin)): Write your services in Kotlin
-- JDBC Driver - PostgreSQL ([guide](https://quarkus.io/guides/datasource)): Connect to the PostgreSQL database via JDBC
+---
 
-## Provided Code
+## 📄 Licença
 
-### REST
-
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+Este projeto é de uso privado e acadêmico. Direitos reservados.
